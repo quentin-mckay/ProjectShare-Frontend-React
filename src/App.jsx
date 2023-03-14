@@ -1,29 +1,100 @@
+import { useState, useContext } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import { Home, Login } from '../pages'
+import { 
+	HomePage, 
+	LoginPage, 
+	RegisterPage, 
+	ProjectPage, 
+	CreateProjectPage, 
+	EditProjectPage,
+	UserPage,
+	TagPage
+} from './pages'
+
+import AuthContext from "./context/AuthProvider"
+
+import logo from './assets/logo1.png'
 
 export default function App() {
+
+	// const [token, setToken] = useState(localStorage.getItem('token'))
+	// const isAuthenticated = Boolean(token) 
+
+	// const clearToken = () => {
+	// 	localStorage.removeItem('token')
+	// 	setToken(null)
+	// }
+
+	const { auth, setAuth } = useContext(AuthContext)
+
+	const handleLogout = () => {
+		setAuth({
+			username: null,
+			userID: null,
+			token: null,
+			isAuthenticated: false
+		})
+	}
+
+
 	return (
-		<div className="h-screen bg-gray-200 grid-rows-[auto-1fr]">
-			<header className='p-4 flex justify-between bg-blue-200'>
-				<Link to='/'>
-					ProjectShare
+		<div className="bg-gray-300 grid grid-rows-[auto-1fr]">
+
+			<header className='p-4 flex justify-between items-center bg-blue-200'>
+
+				<Link to='/' className='flex items-center gap-2'>
+					<img src={logo} className='w-8 h-8'	alt="" />
+					<h1 className='text-2xl font-bold'>
+						ProjectShare
+					</h1>
 				</Link>
 
+			
+				<Link to={`/users/${auth.userID}`}>
+					<p>{auth.username}</p>
+				</Link>
+
+				<p>{auth.isAuthenticated ? 'True' : 'False'}</p>
+
 				<nav>
-					<Link to='/auth/login' className='px-4 py-2'>
-						Log In
-					</Link>
-					<Link className='px-4 py-2 border border-gray-500 rounded'>
-						Sign Up
-					</Link>
+					{/* {auth.isAuthenticated ? ( */}
+						<>
+							<button 
+								onClick={handleLogout}
+								className='px-4 py-2'
+							>
+								Logout
+							</button>
+							<Link to='/create-project' element={<CreateProjectPage/>} className='px-4 py-2 border border-gray-500 rounded'>
+								Add Project
+							</Link>
+						</>
+					{/* ) : (  */}
+						<>
+							<Link to='/login' className='px-4 py-2'>
+								Log In
+							</Link>
+							<Link to='/register' className='px-4 py-2 border border-gray-500 rounded'>
+								Sign Up
+							</Link>
+						</>
+					{/* )} */}
 				</nav>
 			</header>
 
-			<main>
+			<main className='max-w-7xl p-6'>
 				<Routes>
-					<Route path='/' element={<Home/>} />
-					<Route path='/auth/login' element={<Login/>} />
+					<Route path='/' element={<HomePage/>} />
+					<Route path="/projects/:projectId" element={<ProjectPage />} />
+
+					<Route path="/create-project" element={<CreateProjectPage />} />
+          			<Route path="/edit-project/:projectId" element={<EditProjectPage />} />
 					
+					<Route path='/register' element={<RegisterPage/>} />
+					<Route path='/login' element={<LoginPage/>} />
+
+					<Route path='/users/:userID' element={<UserPage />} />
+					<Route path='/tags/:tagName' element={<TagPage />} />
 				</Routes>
 			</main>
 		</div>
