@@ -90,13 +90,12 @@ const RegisterPage = () =>  {
 	
 	return (
 		<section className="max-w-lg mx-auto">
-			<p className="bg-red-200" ref={errRef}>{errMsg}</p>
 
-			<h1 className="text-3xl font-bold text-center">Register</h1>
+			<h1 className="text-3xl font-bold text-center">Sign Up</h1>
 
-			<form onSubmit={handleSubmit}>
-				<div className="mt-4">
-					<label htmlFor="username" className="input-label">Username: </label>
+			<form onSubmit={handleSubmit} className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-2xl flex flex-col gap-6">
+				<div className="">
+					{/* <label htmlFor="username" className="input-label">Username: </label> */}
 					<input
 						type="text"
 						id="username"
@@ -109,8 +108,8 @@ const RegisterPage = () =>  {
 						className="input-field"
 					/>
 				</div>
-				<div className="mt-4">
-					<label htmlFor="password" className="input-label">Password: </label>
+				<div className="">
+					{/* <label htmlFor="password" className="input-label">Password: </label> */}
 					<input
 						type="password"
 						id="password"
@@ -121,9 +120,11 @@ const RegisterPage = () =>  {
 						className="input-field"
 					/>
 				</div>
-				<button className="px-4 py-2 mt-4 bg-green-200 bg-opacity-50 border border-gray-400 rounded hover:bg-opacity-100">
+				<button className="w-full px-5 py-2.5 bg-primary-accent bg-opacity-90 text-light-text rounded hover:bg-opacity-100">
 					Sign Up
 				</button>
+
+				{errMsg && <p ref={errRef} className="bg-red-200 px-4 py-2 rounded">{errMsg}</p>}
 			</form>
 
 		</section>

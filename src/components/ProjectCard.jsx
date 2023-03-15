@@ -49,35 +49,35 @@ const ProjectCard = ({project}) => {
 		// 	</div>
 		// </div>
 
-		<div className="grid grid-cols-[3fr_1fr] border border-gray-500 rounded shadow">
+		<div className="grid grid-cols-[4fr_2fr] bg-secondary-bg rounded-xl shadow-2xl overflow-hidden">
 
 			<div className="p-6 flex flex-col items-start">
 
 				{tags.length > 0 && 
-					<div className="">
+					<div className="mb-4">
 						{tags.map(tag => (
 							// <p>{tag.name}</p>
 							<Link to={`/tags/${tag.name}`} key={tag.id} >
-								<span className="inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+								<span className="inline-block border border-primary-accent rounded-full px-2 py-1 text-xs font-semibold text-primary-accent mr-2 mb-2">
 									{tag.name}
 								</span>
 							</Link>
 						))}
 					</div>}
 
-				<p className="text-3xl font-semibold mt-4">{title}</p>
+				<p className="text-3xl font-semibold">{title}</p>
 
-				<p className="mt-2">{description}</p>
+				<p className="mt-2 text-secondary-text">{description}</p>
 
-				<Link to={`/projects/${project.id}`} className='flex items-center gap-1 text-indigo-800 mt-2'>
+
+				<p className="mt-12">by <Link to={`/users/${project.user.id}`} className="font-semibold">{project.user.username}</Link></p>
+
+				<Link to={`/projects/${project.id}`} className='flex items-center text-sm gap-1 bg-primary-accent text-light-text px-3 py-2 rounded mt-3'>
 					<span>View Project</span>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+					{/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
 						<path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-					</svg>
+					</svg> */}
 				</Link>
-
-				<p className="mt-6">by <Link to={`/users/${project.user.id}`} className="font-semibold">{project.user.username}</Link></p>
-
 			</div>
 			
 			<div className="">

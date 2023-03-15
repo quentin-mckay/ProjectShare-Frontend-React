@@ -54,7 +54,7 @@ export default function HomePage() {
 			
 			<h1 className="text-3xl font-bold text-center">All Projects</h1>
 			{/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4"> */}
-			<div className="grid grid-cols-1 gap-6 mt-4">
+			<div className="grid grid-cols-1 gap-8 mt-4">
 				{projectElements}
 			</div>
 			

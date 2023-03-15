@@ -17,17 +17,10 @@ import logo from './assets/logo1.png'
 
 export default function App() {
 
-	// const [token, setToken] = useState(localStorage.getItem('token'))
-	// const isAuthenticated = Boolean(token) 
-
-	// const clearToken = () => {
-	// 	localStorage.removeItem('token')
-	// 	setToken(null)
-	// }
-
 	const { auth, setAuth } = useContext(AuthContext)
 
 	const handleLogout = () => {
+		localStorage.removeItem('token')
 		setAuth({
 			username: null,
 			userID: null,
@@ -38,9 +31,10 @@ export default function App() {
 
 
 	return (
-		<div className="bg-gray-300 grid grid-rows-[auto-1fr]">
+		<div className="h-screen bg-primary-bg text-primary-text grid grid-rows-[auto_1fr]">
+		{/* <div className="bg-primary text-primary grid grid-rows-[auto-1fr]"> */}
 
-			<header className='p-4 flex justify-between items-center bg-blue-200'>
+			<header className='p-4 flex justify-between items-center bg-primary-bg text-primary-text'>
 
 				<Link to='/' className='flex items-center gap-2'>
 					<img src={logo} className='w-8 h-8'	alt="" />
@@ -56,7 +50,7 @@ export default function App() {
 
 				<p>{auth.isAuthenticated ? 'True' : 'False'}</p>
 
-				<nav>
+				<nav className='text-sm '>
 					{/* {auth.isAuthenticated ? ( */}
 						<>
 							<button 

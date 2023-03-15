@@ -27,10 +27,13 @@ function CreateProjectPage() {
 	
     const navigate = useNavigate();
 	
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(false) // for share button 
+
 	const [generatingDescription, setGeneratingDescription] = useState(false)
+	const [generatingImagePrompt, setGeneratingImagePrompt] = useState(false)
 	const [generatingImage, setgeneratingImage] = useState(false)
-	
+
+	const [imagePrompt, setImagePrompt] = useState('')
 
 
     const handleChange = (event) => {
@@ -59,13 +62,28 @@ function CreateProjectPage() {
 		}
 	}
 
+	const generateImagePrompt = async () => {
+		setGeneratingImagePrompt(true)
+
+		try {
+			const response = await axios.post('/openai/image_prompt', {githubURL: form.githubURL})
+			// console.log(response.data)
+			setImagePrompt(response.data.image_prompt)
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setGeneratingImagePrompt(false)
+		}
+	}
+
 	const generateImage = async () => {
 
-		console.log('image')
+		// console.log('image')
 		
 		try {
 			setgeneratingImage(true)
-			const response = await axios.post('/openai/image', { githubURL: form.githubURL })
+			const response = await axios.post('/openai/image', { imagePrompt })
 			// console.log(response.data)
 			setForm({ 
 				...form, 
@@ -91,7 +109,7 @@ function CreateProjectPage() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		console.log('submitted')
+		console.log('Form submitted')
 		
 		try {
 			// /projects doesn't work but /projects/ does ????
@@ -127,11 +145,15 @@ function CreateProjectPage() {
 		// console.log(form)
 	}
 
+	const handleImagePromptChange = (e) => {
+		setImagePrompt(e.target.value)
+	}
+
     return (
         <div className='max-w-2xl mx-auto'>
             <h1 className="text-3xl font-bold text-center">Create Project</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}  className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-2xl flex flex-col gap-6">
                 <div className="flex flex-col gap-5 mt-4">
 
 					{/* GITHUB URL */}
@@ -207,8 +229,12 @@ function CreateProjectPage() {
                     
                 </div>
 
+
+
+
+
 				{/* GENERATE IMAGE BUTTON */}
-				<div className="mt-4">
+				{/* <div className="mt-4">
 					<button
 						type='button'
 						onClick={generateImage}
@@ -216,7 +242,49 @@ function CreateProjectPage() {
 					>
 						{generatingImage ? 'Generating Image...' : 'Generate Image'}
 					</button>
+				</div> */}
+
+
+				<div>
+
+					<div className="flex items-center gap-2 mb-2">
+						<label
+							htmlFor={imagePrompt}
+							className="block text-sm font-medium text-gray-900"
+						>
+							Image Prompt
+						</label>
+
+						
+						<button
+							type="button"
+							onClick={generateImagePrompt}
+							className="font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500"
+						>
+							{generatingImagePrompt ? 'Generating Prompt...' : 'Generate Prompt'}
+						</button>
+						
+						<button
+							type='button'
+							onClick={generateImage}
+							className="font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500"
+						>
+							{generatingImage ? 'Generating Image...' : 'Generate Image'}
+						</button>
+					</div>
+
+					<input
+						id='imagePrompt'
+						name='imagePrompt'
+						placeholder="Image Prompt"
+						value={imagePrompt}
+						onChange={handleImagePromptChange}
+						className="w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none"
+					/>
 				</div>
+
+				
+
 
 				{/* IMAGE PLACEHOLDER AND LOADER */}
 				<div className="relative w-64 h-64 grid place-items-center bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">

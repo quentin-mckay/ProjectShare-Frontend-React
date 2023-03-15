@@ -7,6 +7,8 @@ import axios from '../api/axios'
 export const AuthProvider = ({ children }) => {
 	// const [authToken, setAuthToken] = useState(localStorage.getItem('token'))
 
+	// const isAuthenticated = Boolean(token) 
+
 	// const [auth, setAuth] = useState({
 	// 	username: null,
 	// 	isAuthenticated: false,
@@ -31,14 +33,14 @@ export const AuthProvider = ({ children }) => {
 		if (auth.token) {
 			const getUser = async () => {
 
-				console.log(auth)
+				// console.log(auth)
 
 				try {
 					const response = await axios.post(`/auth/token`, {}, {
 						headers: { Authorization: `Bearer ${auth.token}`}
 					})
 
-					console.log(response.data)
+					// console.log(response.data)
 
 					const userID = response.data.id
 					const username = response.data.username

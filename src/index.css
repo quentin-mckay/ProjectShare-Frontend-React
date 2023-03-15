@@ -4,14 +4,28 @@
 
 /* @import '@eidellev/react-tag-input/dist/index.css'; */
 
-body {
+html, body {
 	font-family: Inter;
 	background: #333;
-	height: 100vh;
+	/* height: 100vh; */
 }
 
+
+/* My Styles */
+
+.input-field {
+	@apply w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none
+}
+
+.input-label {
+	@apply block text-sm font-medium text-gray-900
+}
+
+
+/* Tag Styles */
+
 .tag-input {
-	@apply w-full bg-white rounded border border-gray-300  focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out text-white;
+	@apply w-full bg-white rounded border border-gray-300  focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-200 text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out text-white text-sm;
 }
   
 .tag-input .tag {
@@ -24,12 +38,4 @@ body {
 
 .tag-input .new-tag {
 	@apply focus:border-0 focus:outline-none text-gray-700;
-}
-
-.input-field {
-	@apply w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none
-}
-
-.input-label {
-	@apply block text-sm font-medium text-gray-900
 }

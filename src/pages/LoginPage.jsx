@@ -14,7 +14,7 @@ const LoginPage = () =>  {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	
-	const [errMsg, setErrMsg] = useState('')
+	const [errMsg, setErrMsg] = useState(null)
 	const [success, setSuccess] = useState(false)
 
 	const navigate = useNavigate()
@@ -26,7 +26,7 @@ const LoginPage = () =>  {
 
 	// clear error message when user starts entering username or password
 	useEffect(() => {
-		setErrMsg('')
+		setErrMsg(null)
 	}, [username, password])
 
 	const handleSubmit = async (event) => {
@@ -75,13 +75,14 @@ const LoginPage = () =>  {
 	
 	return (
 		<section className="max-w-lg mx-auto">
-			<p ref={errRef}>{errMsg}</p>
+
+			
 
 			<h1 className="text-3xl font-bold text-center">Log In</h1>
 
-			<form onSubmit={handleSubmit}>
-				<div className="mt-4">
-					<label htmlFor="username" className="input-label">Username: </label>
+			<form onSubmit={handleSubmit} className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-2xl flex flex-col gap-6">
+				<div className="">
+					{/* <label htmlFor="username" className="input-label">Username: </label> */}
 					<input
 						type="text"
 						id="username"
@@ -95,8 +96,8 @@ const LoginPage = () =>  {
 					/>
 				</div>
 
-				<div className="mt-4">
-					<label htmlFor="password" className="input-label">Password: </label>
+				<div className="">
+					{/* <label htmlFor="password" className="input-label">Password: </label> */}
 					<input
 						type="password"
 						id="password"
@@ -108,9 +109,11 @@ const LoginPage = () =>  {
 					/>
 				</div>
 
-				<button className="px-4 py-2 mt-4 bg-green-200 bg-opacity-50 border border-gray-400 rounded hover:bg-opacity-100">
+				<button className="w-full px-5 py-2.5 bg-primary-accent bg-opacity-90 text-light-text rounded hover:bg-opacity-100">
 					Log In
 				</button>
+
+				{errMsg && <p ref={errRef} className="bg-red-200 px-4 py-2 rounded">{errMsg}</p>}
 			</form>
 
 		</section>
