@@ -3,6 +3,7 @@ import AuthContext from "../context/AuthProvider"
 
 import axios from '../api/axios'
 import { useNavigate } from "react-router-dom"
+import AnimatedPage from "../components/AnimatedPage"
 // const LOGIN_URL = '/auth'
 
 const RegisterPage = () =>  {
@@ -89,45 +90,43 @@ const RegisterPage = () =>  {
 	}
 	
 	return (
-		<section className="max-w-lg mx-auto">
-
-			<h1 className="text-3xl font-bold text-center">Sign Up</h1>
-
-			<form onSubmit={handleSubmit} className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-2xl flex flex-col gap-6">
-				<div className="">
-					{/* <label htmlFor="username" className="input-label">Username: </label> */}
-					<input
-						type="text"
-						id="username"
-						ref={usernameRef}
-						autoComplete='off'
-						onChange={(e) => setUsername(e.target.value)}
-						value={username}
-						required
-						placeholder="Username"
-						className="input-field"
-					/>
-				</div>
-				<div className="">
-					{/* <label htmlFor="password" className="input-label">Password: </label> */}
-					<input
-						type="password"
-						id="password"
-						onChange={(e) => setPassword(e.target.value)}
-						value={password}
-						required
-						placeholder="Password"
-						className="input-field"
-					/>
-				</div>
-				<button className="w-full px-5 py-2.5 bg-primary-accent bg-opacity-90 text-light-text rounded hover:bg-opacity-100">
-					Sign Up
-				</button>
-
-				{errMsg && <p ref={errRef} className="bg-red-200 px-4 py-2 rounded">{errMsg}</p>}
-			</form>
-
-		</section>
+		<AnimatedPage>
+			<section className="max-w-lg mx-auto">
+				<h1 className="text-3xl font-bold text-center">Sign Up</h1>
+				<form onSubmit={handleSubmit} className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-md flex flex-col gap-6">
+					<div className="">
+						{/* <label htmlFor="username" className="input-label">Username: </label> */}
+						<input
+							type="text"
+							id="username"
+							ref={usernameRef}
+							autoComplete='off'
+							onChange={(e) => setUsername(e.target.value)}
+							value={username}
+							required
+							placeholder="Username"
+							className="input-field"
+						/>
+					</div>
+					<div className="">
+						{/* <label htmlFor="password" className="input-label">Password: </label> */}
+						<input
+							type="password"
+							id="password"
+							onChange={(e) => setPassword(e.target.value)}
+							value={password}
+							required
+							placeholder="Password"
+							className="input-field"
+						/>
+					</div>
+					<button className="w-full px-5 py-2.5 bg-primary-accent bg-opacity-90 text-light-text rounded hover:bg-opacity-100">
+						Sign Up
+					</button>
+					{errMsg && <p ref={errRef} className="bg-red-200 px-4 py-2 rounded">{errMsg}</p>}
+				</form>
+			</section>
+		</AnimatedPage>
 	)
 }
 

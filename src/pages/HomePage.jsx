@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 // import { fetchFromAPI } from "../utils/fetchFromAPI" // from javascriptmastery YouTube clone
 
 import axios from '../api/axios'
+import AnimatedPage from "../components/AnimatedPage"
 import ProjectCard from "../components/ProjectCard"
 
 export default function HomePage() {
@@ -50,14 +51,16 @@ export default function HomePage() {
 	))
 
 	return (
-		<section className="max-w-3xl mx-auto">
+		<AnimatedPage>
+			<section className="max-w-3xl mx-auto">
 			
-			<h1 className="text-3xl font-bold text-center">All Projects</h1>
-			{/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4"> */}
-			<div className="grid grid-cols-1 gap-8 mt-4">
-				{projectElements}
-			</div>
+				<h1 className="text-3xl font-bold text-center">All Projects</h1>
+				{/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4"> */}
+				<div className="grid grid-cols-1 gap-8 mt-4">
+					{projectElements}
+				</div>
 			
-		</section>
+			</section>
+		</AnimatedPage>
 	)
 }

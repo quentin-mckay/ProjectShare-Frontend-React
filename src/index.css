@@ -6,7 +6,7 @@
 
 html, body {
 	font-family: Inter;
-	background: #333;
+	background: #ddd;
 	/* height: 100vh; */
 }
 
@@ -38,4 +38,9 @@ html, body {
 
 .tag-input .new-tag {
 	@apply focus:border-0 focus:outline-none text-gray-700;
+}
+
+/* seems to slightly corrent vertical centering  */
+a, button {
+	@apply leading-normal
 }

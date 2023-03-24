@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import axios from '../api/axios'
+import AnimatedPage from '../components/AnimatedPage'
 import ProjectCard from '../components/ProjectCard'
 
 
@@ -34,12 +35,14 @@ const TagPage = () => {
 	))
 
 	return (
-		<section className="max-w-3xl mx-auto">
-			<h1>Tag: {tagName}</h1>
-			<div className="grid grid-cols-1 gap-6 mt-4">
-				{projectElements}
-			</div>
-		</section>
+		<AnimatedPage>
+			<section className="max-w-3xl mx-auto">
+				<h1>Tag: {tagName}</h1>
+				<div className="grid grid-cols-1 gap-6 mt-4">
+					{projectElements}
+				</div>
+			</section>
+		</AnimatedPage>
 	)
 }
 

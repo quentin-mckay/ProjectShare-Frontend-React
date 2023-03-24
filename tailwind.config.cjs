@@ -30,11 +30,12 @@ module.exports = {
 
       // LIGHT MODE
       colors: {
-        'primary-bg': '#ccc',
-        'secondary-bg': '#ddd',
+        'primary-bg': '#ddd',
+        'secondary-bg': '#eee',
         'primary-text': 'black',
         'secondary-text': '#333',
-        'primary-accent': 'slateblue',
+        'primary-accent': 'darkslateblue',
+        // 'primary-accent': 'rgb(79, 70, 229)',
         'light-text': 'white'
       }
     },
