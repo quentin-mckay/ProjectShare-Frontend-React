@@ -92,7 +92,7 @@ const RegisterPage = () =>  {
 	return (
 		<AnimatedPage>
 			<section className="max-w-lg mx-auto">
-				<h1 className="text-3xl font-bold text-center">Sign Up</h1>
+				<h1 className="text-3xl font-light text-center">Sign Up</h1>
 				<form onSubmit={handleSubmit} className="mt-8 bg-secondary-bg p-6 rounded-xl shadow-md flex flex-col gap-6">
 					<div className="">
 						{/* <label htmlFor="username" className="input-label">Username: </label> */}

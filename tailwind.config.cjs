@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     "./index.html",
@@ -6,36 +9,28 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // colors: {
-      //   'primary-bg': '#0f172a',
-      //   'secondary-bg': '#1e293b',
-      //   'primary-text': '#ffffff',
-      //   'secondary-text': '#94a3b8',
-      //   'primary-accent': '#6366f1'
-      // },
-      // colors: {
-      //   'primary-bg': '#1d1d1f',
-      //   'secondary-bg': '#3e3d40',
-      //   'primary-text': '#ffffff',
-      //   'secondary-text': '#94a3b8',
-      //   'primary-accent': '#6864fc'
-      // },
-      // colors: {
-      //   'primary-bg': '#2b2a3c',
-      //   'secondary-bg': '#2e2d40',
-      //   'primary-text': '#ffffff',
-      //   'secondary-text': '#94a3b8',
-      //   'primary-accent': '#f09567'
-      // },
 
       // LIGHT MODE
       colors: {
-        'primary-bg': '#ddd',
-        'secondary-bg': '#eee',
+        // 'primary-bg': colors.red[500],
+        
+        // 'bgcolor': {
+        //   DEFAULT: 'rgb(36 36 36)',
+        //   // DEFAULT: '#0a192f', // slate blue
+        //   dark: '#333'
+        // },
+        'primary-bg': '#ddd', // light gray
+        'secondary-bg': '#eee', // slightly darker gray
         'primary-text': 'black',
-        'secondary-text': '#333',
-        'primary-accent': 'darkslateblue',
-        // 'primary-accent': 'rgb(79, 70, 229)',
+        'secondary-text': colors.gray[700],
+        // 'secondary-text': 'red',
+        'primary-accent': 'darkslateblue', // normal css color
+        'primary-accent-hover': '#5246a0', // slightly lighter
+        // 'primary-accent': '#6469ff',
+        // 'primary-accent': 'rgb(79, 70, 229)', 
+        'generate-button': 'darkslateblue',
+        'generate-button-hover': '#5246a0',
+
         'light-text': 'white'
       }
     },

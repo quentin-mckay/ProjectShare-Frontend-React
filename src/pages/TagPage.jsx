@@ -22,7 +22,7 @@ const TagPage = () => {
 					}
 				})
 				setProjects(response.data)
-				console.log(response.data)
+				// console.log(response.data)
 			} catch (error) {
 				console.log(error)
 			}
@@ -37,8 +37,10 @@ const TagPage = () => {
 	return (
 		<AnimatedPage>
 			<section className="max-w-3xl mx-auto">
-				<h1>Tag: {tagName}</h1>
-				<div className="grid grid-cols-1 gap-6 mt-4">
+				<h1 className='inline-block text-3xl font-light border-gray-600 my-2'>
+					Tag: {tagName}
+				</h1>
+				<div className="grid grid-cols-1 gap-6 mt-6">
 					{projectElements}
 				</div>
 			</section>

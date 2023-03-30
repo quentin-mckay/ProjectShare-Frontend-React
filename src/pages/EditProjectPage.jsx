@@ -180,8 +180,8 @@ function EditProjectPage() {
 
     return (
         <AnimatedPage>
-            <div className='max-w-2xl mx-auto'>
-                <h1 className='text-3xl font-bold text-center'>Edit Project</h1>
+            <div className='max-w-3xl mx-auto'>
+                <h1 className='inline-block text-3xl font-light border-gray-600 mt-2'>Edit Project</h1>
 
                 {/* FORM */}
                 <form

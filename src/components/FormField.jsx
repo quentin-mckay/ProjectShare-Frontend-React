@@ -30,7 +30,7 @@ const FormField = ({ labelName, type, name, placeholder, value, handleChange, ha
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none'
+				className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-accent focus:border-primary-accent outline-none'
 			/>
 		</div>
 	)

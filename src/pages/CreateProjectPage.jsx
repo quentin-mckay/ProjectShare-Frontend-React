@@ -10,18 +10,22 @@ import Loader from '../components/Loader'
 import AuthContext from '../context/AuthProvider'
 import AnimatedPage from '../components/AnimatedPage'
 
-
-
 function CreateProjectPage() {
     const { auth } = useContext(AuthContext)
 
     const [form, setForm] = useState({
-        title: 'New project',
-        description: 'Blurb about my project',
-        githubURL: 'https://github.com/quentin-mckay/Pendulum-Wave',
-        demoURL: 'asdf',
+        title: '',
+        description: '',
+        githubURL: '',
+        demoURL: '',
         image: '',
-        tags: ['React', 'Tailwind', 'Axios'],
+        tags: [],
+        // title: 'New project',
+        // description: 'Blurb about my project',
+        // githubURL: 'https://github.com/quentin-mckay/Pendulum-Wave',
+        // demoURL: 'asdf',
+        // image: '',
+        // tags: ['React', 'Tailwind', 'Axios'],
     })
 
     // const [tags, setTags] = useState(['React', 'Tailwind'])
@@ -49,7 +53,9 @@ function CreateProjectPage() {
         setGeneratingDescription(true)
 
         try {
-            const response = await axios.post('/openai/description', { githubURL: form.githubURL })
+            const response = await axios.post('/openai/description', {
+                githubURL: form.githubURL,
+            })
             // console.log(response.data)
             setForm({
                 ...form,
@@ -66,7 +72,9 @@ function CreateProjectPage() {
         setGeneratingImagePrompt(true)
 
         try {
-            const response = await axios.post('/openai/image_prompt', { githubURL: form.githubURL })
+            const response = await axios.post('/openai/image_prompt', {
+                githubURL: form.githubURL,
+            })
             // console.log(response.data)
             setImagePrompt(response.data.image_prompt)
         } catch (error) {
@@ -96,7 +104,9 @@ function CreateProjectPage() {
 
     const handleGenerateTags = async () => {
         try {
-            const response = await axios.post('/openai/tags', { githubURL: form.githubURL })
+            const response = await axios.post('/openai/tags', {
+                githubURL: form.githubURL,
+            })
             // console.log(response.data)
         } catch (error) {
             console.log(error)
@@ -117,7 +127,7 @@ function CreateProjectPage() {
 
             // console.log(response?.data)
 
-            // navigate('/')
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
@@ -148,87 +158,99 @@ function CreateProjectPage() {
     return (
         <AnimatedPage>
             <div className='max-w-3xl mx-auto'>
-                <h1 className='text-3xl font-bold text-center'>Create Project</h1>
+                <h1 className='inline-block text-3xl font-light border-gray-600 mt-2'>
+                    Create Project
+                </h1>
 
                 {/* FORM */}
                 <form
                     onSubmit={handleSubmit}
                     className='mt-8 bg-secondary-bg p-6 rounded-xl shadow-md flex flex-col gap-6'
                 >
-                    <div className='flex flex-col gap-5 mt-4'>
-                        {/* GITHUB URL */}
-                        <FormField
-                            labelName='GitHub URL (required)'
-                            type='text'
-                            name='githubURL'
-                            placeholder=''
-                            value={form.githubURL}
-                            handleChange={handleChange}
-                        />
+                    {/* <div className='flex flex-col gap-5 mt-4'> */}
+                    {/* GITHUB URL */}
+                    <FormField
+                        labelName='GitHub URL (required)'
+                        type='text'
+                        name='githubURL'
+                        placeholder=''
+                        value={form.githubURL}
+                        handleChange={handleChange}
+                    />
 
-                        {/* TITLE */}
-                        <FormField
-                            labelName='Title'
-                            type='text'
-                            name='title'
-                            placeholder=''
-                            value={form.title}
-                            handleChange={handleChange}
-                        />
+                    {/* TITLE */}
+                    <FormField
+                        labelName='Title'
+                        type='text'
+                        name='title'
+                        placeholder=''
+                        value={form.title}
+                        handleChange={handleChange}
+                    />
 
-                        {/* DESCRIPTION */}
-                        <div>
-                            <div className='flex items-center gap-2 mb-2'>
-                                <label
-                                    htmlFor={name}
-                                    className='block text-sm font-medium text-gray-900'
-                                >
-                                    Description
-                                </label>
-
-                                <button
-                                    type='button'
-                                    onClick={generateDescription}
-                                    className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500'
-                                >
-                                    {generatingDescription ? 'Generating...' : 'Generate'}
-                                </button>
-                            </div>
-                            <textarea
-                                id='description'
-                                name='description'
-                                placeholder='Description'
-                                rows='5'
-                                value={form.description}
-                                onChange={handleChange}
-                                className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none'
-                            />
-                        </div>
-
-                        {/* DEMO URL */}
-                        <FormField
-                            labelName='Demo URL'
-                            type='text'
-                            name='demoURL'
-                            placeholder=''
-                            value={form.demoURL}
-                            handleChange={handleChange}
-                        />
-
-                        {/* TAGS */}
-                        <div>
-                            <label className='block text-sm font-medium text-gray-900 mb-2'>
-                                Tags
+                    {/* DESCRIPTION */}
+                    <div>
+                        <div className='flex items-center gap-2 mb-2'>
+                            <label
+                                htmlFor='description'
+                                className='block text-sm font-medium text-gray-900'
+                            >
+                                Description
                             </label>
-                            <TagInput
-                                value={form.tags}
-                                onChange={handleChangeTags}
-                                colorize
-                                placeholder='New Tag'
-                                onClick={onTagsClick}
-                            />
+
+                            <button
+                                type='button'
+                                onClick={generateDescription}
+                                className='q-generate-button flex items-center'
+                            >
+                                <span className=''>Generate</span>
+                                {/* <div className='ml-2'>
+                                        <Loader w='4' h='4' />
+                                    </div> */}
+                                {generatingDescription ? (
+                                    <div className='ml-2'>
+                                        <Loader w='4' h='4' />
+                                    </div>
+                                ) : (
+                                    ''
+                                )}
+                            </button>
                         </div>
+                        <textarea
+                            id='description'
+                            name='description'
+                            // placeholder='Description'
+                            rows='5'
+                            value={form.description}
+                            onChange={handleChange}
+                            className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-accent focus:border-primary-accent outline-none'
+                        />
                     </div>
+
+                    {/* DEMO URL */}
+                    <FormField
+                        labelName='Demo URL'
+                        type='text'
+                        name='demoURL'
+                        placeholder=''
+                        value={form.demoURL}
+                        handleChange={handleChange}
+                    />
+
+                    {/* TAGS */}
+                    <div>
+                        <label className='block text-sm font-medium text-gray-900 mb-2'>
+                            Tags
+                        </label>
+                        <TagInput
+                            value={form.tags}
+                            onChange={handleChangeTags}
+                            colorize
+                            // placeholder='Add Tag'
+                            onClick={onTagsClick}
+                        />
+                    </div>
+                    {/* </div> */}
 
                     {/* GENERATE IMAGE BUTTON */}
                     {/* <div className="mt-4">
@@ -254,17 +276,28 @@ function CreateProjectPage() {
                             <button
                                 type='button'
                                 onClick={generateImagePrompt}
-                                className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500'
+                                className='q-generate-button flex items-center'
                             >
-                                {generatingImagePrompt ? 'Generating Prompt...' : 'Generate Prompt'}
+                                <span className=''>Generate Image Prompt</span>
+                                {generatingImagePrompt ? (
+                                    <div className='ml-2'>
+                                        <Loader w='4' h='4' />
+                                    </div>
+                                ) : (
+                                    ''
+                                )}
                             </button>
 
                             <button
                                 type='button'
                                 onClick={generateImage}
-                                className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500'
+                                className='q-generate-button flex items-center'
                             >
-                                {generatingImage ? 'Generating Image...' : 'Generate Image'}
+                                {generatingImage ? (
+                                    'Generating...'
+                                ) : (
+                                    'Generate Image'
+                                )}
                             </button>
                         </div>
 
@@ -274,12 +307,12 @@ function CreateProjectPage() {
                             placeholder='Image Prompt'
                             value={imagePrompt}
                             onChange={handleImagePromptChange}
-                            className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none'
+                            className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-accent focus:border-primary-accent outline-none transition-colors'
                         />
                     </div>
 
                     {/* IMAGE PLACEHOLDER AND LOADER */}
-                    <div className='relative w-64 h-64 grid place-items-center bg-gray-50 border border-gray-300 rounded-lg overflow-hidden'>
+                    <div className='relative mx-auto w-64 h-64 grid place-items-center bg-gray-50 border border-gray-300 rounded-lg overflow-hidden'>
                         {form.image ? (
                             <img
                                 src={form.image}
@@ -297,22 +330,24 @@ function CreateProjectPage() {
                         {/* LOADER */}
                         {generatingImage && (
                             <div className='absolute inset-0 z-0 grid place-items-center bg-black bg-opacity-50 rounded-lg'>
-                                <Loader />
+                                <Loader w='10' h='10'/>
                             </div>
                         )}
                     </div>
 
                     {/* SHARE BUTTON */}
-                    <div className='mt-2'>
-                        {/* <p className='mt-2 text-[#666e75] text-[14px]'>Share it with others in the community</p> */}
+                    {/* <div className='mt-2'> */}
+                    {/* <p className='mt-2 text-[#666e75] text-[14px]'>Share it with others in the community</p> */}
 
-                        <button
-                            type='submit'
-                            className='w-full px-5 py-2.5 mt-3 text-white bg-[#6469ff] font-medium text-center rounded-md text-sm sm:w-auto'
-                        >
-                            {loading ? 'Sharing...' : 'Share with the community'}
-                        </button>
-                    </div>
+                    <button
+                        type='submit'
+                        className='px-8 py-4 text-white bg-primary-accent font-medium text-center rounded-md text-md hover:bg-primary-accent-hover transition'
+                    >
+                        {loading
+                            ? 'Sharing...'
+                            : 'Share project with the community!'}
+                    </button>
+                    {/* </div> */}
                 </form>
             </div>
         </AnimatedPage>

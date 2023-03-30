@@ -73,10 +73,11 @@ const UserPage = () => {
 	return (
 		<AnimatedPage>
 			<div className="max-w-3xl mx-auto">
-				{user && <h1>User: {user.username}</h1>}
-				<h1 className="text-3xl font-bold">Projects</h1>
+				<h1 className="inline-block text-3xl font-light border-gray-600 mt-2">
+					{user?.username}'s Projects
+				</h1>
 				{/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4"> */}
-				<div className="grid gap-4 3 mt-4">
+				<div className="grid gap-4 3 mt-8">
 					{projectElements}
 				</div>
 			</div>
