@@ -40,7 +40,7 @@ const UserPage = () => {
 			setProjects(response.data)
 
 		} catch (err) {
-			console.log(err)
+			console.log('getUserProjects', err)
 		}
 	}
 
@@ -53,7 +53,7 @@ const UserPage = () => {
 				setUser(response.data)
 
 			} catch (err) {
-				console.log(err)
+				console.log('getUser', err)
 			}
 		}
 		getUser()

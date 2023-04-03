@@ -201,14 +201,14 @@ function CreateProjectPage() {
                             <button
                                 type='button'
                                 onClick={generateDescription}
-                                className='q-generate-button flex items-center'
+                                className='q-generate-button flex items-center gap-2'
                             >
-                                <span className=''>Generate</span>
+                                <span className=''>AI Generate</span>
                                 {/* <div className='ml-2'>
                                         <Loader w='4' h='4' />
                                     </div> */}
                                 {generatingDescription ? (
-                                    <div className='ml-2'>
+                                    <div className=''>
                                         <Loader w='4' h='4' />
                                     </div>
                                 ) : (
@@ -250,18 +250,7 @@ function CreateProjectPage() {
                             onClick={onTagsClick}
                         />
                     </div>
-                    {/* </div> */}
-
-                    {/* GENERATE IMAGE BUTTON */}
-                    {/* <div className="mt-4">
-								<button
-									type='button'
-									onClick={generateImage}
-									className='w-full px-4 py-2 text-white text-sm bg-green-700 font-medium rounded-md sm:w-auto text-center'
-								>
-									{generatingImage ? 'Generating Image...' : 'Generate Image'}
-								</button>
-							</div> */}
+                    
 
                     {/* IMAGE PROMPT */}
                     <div>
@@ -276,9 +265,10 @@ function CreateProjectPage() {
                             <button
                                 type='button'
                                 onClick={generateImagePrompt}
-                                className='q-generate-button flex items-center'
+                                className='q-generate-button flex items-center gap-2'
                             >
-                                <span className=''>Generate Image Prompt</span>
+                                <span className=''>AI Generate Image Prompt</span>
+
                                 {generatingImagePrompt ? (
                                     <div className='ml-2'>
                                         <Loader w='4' h='4' />
@@ -336,8 +326,6 @@ function CreateProjectPage() {
                     </div>
 
                     {/* SHARE BUTTON */}
-                    {/* <div className='mt-2'> */}
-                    {/* <p className='mt-2 text-[#666e75] text-[14px]'>Share it with others in the community</p> */}
 
                     <button
                         type='submit'
@@ -347,7 +335,6 @@ function CreateProjectPage() {
                             ? 'Sharing...'
                             : 'Share project with the community!'}
                     </button>
-                    {/* </div> */}
                 </form>
             </div>
         </AnimatedPage>

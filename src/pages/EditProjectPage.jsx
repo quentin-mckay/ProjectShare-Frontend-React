@@ -124,7 +124,7 @@ function EditProjectPage() {
 
             // console.log(response?.data)
 
-            // navigate('/')
+            navigate('/')
         } catch (error) {
             console.log(error)
 			setErrMsg(error.response.data.message)
@@ -263,87 +263,16 @@ function EditProjectPage() {
                         </div>
                     </div>
 
-                    {/* GENERATE IMAGE BUTTON */}
-                    {/* <div className="mt-4">
-								<button
-									type='button'
-									onClick={generateImage}
-									className='w-full px-4 py-2 text-white text-sm bg-green-700 font-medium rounded-md sm:w-auto text-center'
-								>
-									{generatingImage ? 'Generating Image...' : 'Generate Image'}
-								</button>
-							</div> */}
 
-                    {/* IMAGE PROMPT */}
-                    {/* <div>
-                        <div className='flex items-center gap-2 mb-2'>
-                            <label
-                                htmlFor={imagePrompt}
-                                className='block text-sm font-medium text-gray-900'
-                            >
-                                Image Prompt
-                            </label>
-
-                            <button
-                                type='button'
-                                onClick={generateImagePrompt}
-                                className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500'
-                            >
-                                {generatingImagePrompt ? 'Generating Prompt...' : 'Generate Prompt'}
-                            </button>
-
-                            <button
-                                type='button'
-                                onClick={generateImage}
-                                className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black border border-gray-500'
-                            >
-                                {generatingImage ? 'Generating Image...' : 'Generate Image'}
-                            </button>
-                        </div>
-
-                        <input
-                            id='imagePrompt'
-                            name='imagePrompt'
-                            placeholder='Image Prompt'
-                            value={imagePrompt}
-                            onChange={handleImagePromptChange}
-                            className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-[#5469ff] focus:border-[#4649ff] outline-none'
-                        />
-                    </div> */}
-
-                    {/* IMAGE PLACEHOLDER AND LOADER */}
-                    {/* <div className='relative w-64 h-64 grid place-items-center bg-gray-50 border border-gray-300 rounded-lg overflow-hidden'> */}
-                        {/* {form.image ? (
-                            <img
-                                src={form.image}
-                                alt='cover image'
-                                className='w-full h-full object-contain'
-                            />
-                        ) : (
-                            <img
-                                src={imagePlaceholder}
-                                alt='placeholder'
-                                className='w-3/4 h-3/4 opacity-40 object-contain'
-                            />
-                        )} */}
-
-                        {/* LOADER */}
-                        {/* {generatingImage && (
-                            <div className='absolute inset-0 z-0 grid place-items-center bg-black bg-opacity-50 rounded-lg'>
-                                <Loader />
-                            </div>
-                        )} */}
-                    {/* </div> */}
-
-                    {/* SHARE BUTTON */}
+                    {/* UPDATE BUTTON */}
                     <div className='mt-2'>
                         {/* <p className='mt-2 text-[#666e75] text-[14px]'>Share it with others in the community</p> */}
 
                         <button
                             type='submit'
-                            className='w-full px-5 py-2.5 mt-3 text-white bg-[#6469ff] font-medium text-center rounded-md text-sm sm:w-auto'
+                            className='w-full px-5 py-2.5 mt-3 text-white bg-primary-accent font-medium text-center rounded-md text-sm hover:bg-primary-accent-hover sm:w-auto'
                         >
-                            {loading ? 'Sharing...' : 'Share with the community'}
+                            {loading ? 'Sharing...' : 'Update Project'}
                         </button>
                     </div>
 

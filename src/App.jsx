@@ -89,7 +89,7 @@ export default function App() {
                     {auth.isAuthenticated && (
                         <Link
                             to={`/users/${auth.userID}`}
-                            className='pl-3 pr-4 py-2 ml-2 text-primary-accent border border-primary-accent rounded-full font-bold flex items-center gap-1 hover:bg-primary-accent hover:bg-opacity-5 transition'
+                            className='pl-3 pr-4 py-2 ml-2 text-primary-accent border border-primary-accent rounded-full font-bold flex items-center gap-1  hover:bg-opacity-5 transition'
                         >
 							<UserIcon className='w-6 h-6'/>
                             {auth.username}

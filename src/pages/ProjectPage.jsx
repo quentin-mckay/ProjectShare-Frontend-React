@@ -4,7 +4,10 @@ import { Link, useParams } from 'react-router-dom'
 import axios from '../api/axios'
 import AnimatedPage from '../components/AnimatedPage'
 import AuthContext from '../context/AuthProvider'
-//
+
+import { FaGithub } from 'react-icons/fa'
+import { BsBoxArrowUpRight } from 'react-icons/bs'
+
 function ProjectPage() {
     const [project, setProject] = useState(null)
     const [comments, setComments] = useState([])
@@ -97,20 +100,24 @@ function ProjectPage() {
                                     {project.description}
                                 </p>
                             </div>
+
+                            {/* GITHUB and DEMO */}
                             <div className='my-6 grid grid-cols-1 gap-1 sm:grid-cols-2'>
                                 <a
                                     href={project.github_url}
                                     target='_blank'
-                                    className='block text-center py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition duration-200'
+                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-blue-600 text-white font-normal rounded hover:bg-blue-600 transition duration-200'
                                 >
-                                    View on GitHub
+                                    <span>View on GitHub</span>
+                                    <FaGithub size={18}/>
                                 </a>
                                 <a
                                     href={project.demo_url}
                                     target='_blank'
-                                    className='block text-center py-2 px-4 bg-green-500 text-white font-bold rounded hover:bg-green-600 transition duration-200'
+                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-green-600 text-white font-normal rounded hover:bg-green-600 transition duration-200'
                                 >
-                                    View Demo
+                                    <span>View Demo</span>
+                                    <BsBoxArrowUpRight size={18} />
                                 </a>
                             </div>
                             <div className='my-6'>
@@ -159,9 +166,9 @@ function ProjectPage() {
                                     </button>
                                 </form>
 
-                                <div className='my-6'>
-                                    {comments.map((comment) => (
-                                        <div className='flex items-center border-t border-gray-400 my-2 py-1'>
+                                <div className='mt-8'>
+                                    {comments.map((comment, index) => (
+                                        <div key={index} className='flex items-center border-t border-gray-400 my-2 py-1'>
                                             {/* <img
                                                 class='w-10 h-10 rounded-full mr-4'
                                                 src='https://via.placeholder.com/150x150.png'

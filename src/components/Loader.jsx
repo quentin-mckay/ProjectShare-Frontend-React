@@ -1,11 +1,10 @@
-const Loader = ({ w, h }) => {
-    // console.log(w, h)
+const Loader = (props) => {
 
     return (
         <div role='status'>
             <svg
                 aria-hidden='true'
-                className={`inline w-${w} h-${h} mr-2 text-gray-200 animate-spin fill-[#6469ff]`}
+                className={`inline w-${props.w} h-${props.h} mr-2 text-gray-200 animate-spin fill-[#6469ff]`}
                 viewBox='0 0 100 101'
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'

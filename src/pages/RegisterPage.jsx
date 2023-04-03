@@ -43,6 +43,8 @@ const RegisterPage = () =>  {
 			const userID = response?.data?.id
 			// const roles = response?.data?.roles // an array of roles (number assigned different roles on backend)
 
+			console.log(`userID: ${userID}`)
+
 			if (token) {
 
 				console.log('token received')
