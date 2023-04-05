@@ -10,11 +10,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
     const { auth } = useContext(AuthContext)
 
     const shortDescription = description.split('. ')[0]
-
     
-
-    
-
     const formatDate = (date) => {
         const dateObj = new Date(date)
         const options = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -29,6 +25,8 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
     }
 
     const formattedDate = formatDate(date)
+
+
 
     return (
         <div className='grid grid-cols-[5fr_3fr] bg-secondary-bg rounded-lg shadow-md overflow-hidden'>
@@ -105,7 +103,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
             <div className='p-2'>
                 {image_url?.length > 0 && (
                     <img
-                        className='object-contain h-full max-h-72 mx-auto rounded-lg'
+                        className='object-contain h-full max-h-64 mx-auto rounded-lg'
                         src={image_url}
                         alt=''
                     />
