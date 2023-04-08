@@ -29,7 +29,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
 
 
     return (
-        <div className='grid grid-cols-[5fr_3fr] bg-secondary-bg rounded-lg shadow-md overflow-hidden'>
+        <div className='grid grid-cols-[5fr_3fr] min-h-[220px] bg-secondary-bg rounded-lg shadow-md overflow-hidden'>
             <div className='p-6 flex flex-col'>
                 {/* Date and Tags */}
                 <div className='flex justify-between items-center'>
@@ -100,10 +100,10 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
                 </div>
             </div>
 
-            <div className='p-2'>
+            <div className='p-4'>
                 {image_url?.length > 0 && (
                     <img
-                        className='object-contain h-full max-h-64 mx-auto rounded-lg'
+                        className='object-cover h-full max-h-60 mx-auto rounded-lg'
                         src={image_url}
                         alt=''
                     />
