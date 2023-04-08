@@ -106,7 +106,7 @@ function ProjectPage() {
                                 <a
                                     href={project.github_url}
                                     target='_blank'
-                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-blue-600 text-white font-normal rounded hover:bg-blue-600 transition duration-200'
+                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-blue-600 text-white font-normal rounded hover:bg-blue-500  duration-200'
                                 >
                                     <span>View on GitHub</span>
                                     <FaGithub size={18}/>
@@ -114,12 +114,13 @@ function ProjectPage() {
                                 <a
                                     href={project.demo_url}
                                     target='_blank'
-                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-green-600 text-white font-normal rounded hover:bg-green-600 transition duration-200'
+                                    className='flex items-center justify-center gap-2 text-center py-2 px-4 bg-emerald-600 text-white font-normal rounded hover:bg-emerald-500'
                                 >
                                     <span>View Demo</span>
                                     <BsBoxArrowUpRight size={18} />
                                 </a>
                             </div>
+                            {/* TAGS */}
                             <div className='my-6'>
                                 <h2 className='text-lg font-bold text-gray-800 mb-2'>
                                     Tags:
@@ -129,7 +130,7 @@ function ProjectPage() {
                                         <Link
                                             to={`/tags/${tag.name}`}
                                             key={tag.id}
-                                            className='inline-block border border-primary-accent rounded-full px-2 py-1 text-sm font-semibold text-primary-accent mr-2 mb-2 hover:bg-primary-accent hover:bg-opacity-10 transition-colors'
+                                            className='inline-block border border-primary-accent rounded-full px-2 py-1 text-sm font-medium text-primary-accent mr-2 mb-2 hover:bg-primary-accent hover:bg-opacity-5 transition-colors'
                                         >
                                             {tag.name}
                                         </Link>
@@ -160,7 +161,7 @@ function ProjectPage() {
                                     ></textarea>
                                     <button
                                         type='submit'
-                                        className=' bg-primary-accent text-white font-bold py-2 px-4 mt-1 rounded hover:primary-accent-hover transition duration-200'
+                                        className=' bg-primary-accent text-white font-bold py-2 px-4 mt-1 rounded hover:bg-primary-accent-hover transition'
                                     >
                                         Submit
                                     </button>

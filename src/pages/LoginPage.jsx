@@ -106,7 +106,7 @@ const LoginPage = () =>  {
 							className="input-field"
 						/>
 					</div>
-					<button className="w-full px-5 py-2.5 bg-primary-accent bg-opacity-90 text-light-text rounded hover:bg-opacity-100">
+					<button className="w-full px-5 py-2.5 bg-primary-accent text-light-text rounded transition hover:bg-primary-accent-hover">
 						Log In
 					</button>
 					{errMsg && <p ref={errRef} className="bg-red-200 px-4 py-2 rounded">{errMsg}</p>}

@@ -41,10 +41,10 @@ export default function App() {
     const location = useLocation()
 
     return (
-        <div className='min-h-screen bg-primary-bg text-primary-text grid grid-rows-[auto_1fr]'>
+        <div className='min-h-screen bg-primary-bg  text-primary-text grid grid-rows-[auto_1fr]'>
             {/* <div className="bg-primary text-primary grid grid-rows-[auto-1fr]"> */}
 
-            <header className='p-4 flex justify-between items-center bg-primary-bg text-primary-text shadow'>
+            <header className='p-4 flex justify-between items-center bg-secondary-bg text-primary-text shadow'>
                 <Link to='/' className='flex items-center gap-2'>
                     <img src={logo} className='w-8 h-8' alt='' />
                     <h1 className='text-2xl font-semibold'>ProjectShare</h1>
@@ -74,13 +74,13 @@ export default function App() {
                         <>
                             <Link
                                 to='/login'
-                                className='px-4 py-2 border border-primary-accent rounded-md text-primary-accent'
+                                className='px-4 py-2 border border-primary-accent rounded-md text-primary-accent hover:bg-primary-accent-hover/5'
                             >
                                 Log In
                             </Link>
                             <Link
                                 to='/register'
-                                className='px-4 py-2 border bg-primary-accent text-white rounded-md'
+                                className='px-4 py-2 border bg-primary-accent text-white rounded-md hover:bg-primary-accent-hover'
                             >
                                 Sign Up
                             </Link>
