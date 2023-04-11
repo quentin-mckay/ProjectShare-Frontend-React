@@ -9,7 +9,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
 
     const { auth } = useContext(AuthContext)
 
-    const shortDescription = description.split('. ')[0]
+    const shortDescription = description.split('.')[0] + '.'
     
     const formatDate = (date) => {
         const dateObj = new Date(date)
@@ -65,7 +65,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
                     <div className='space-x-1'>
                         <Link
                             to={`/projects/${project.id}`}
-                            className='text-sm bg-primary-accent text-light-text px-3 py-2 rounded-md hover:bg-primary-accent-hover'
+                            className='text-sm bg-primary-accent/80 text-light-text px-3 py-2 rounded-md hover:bg-primary-accent-hover/80'
                         >
                             <span>View Project</span>
                         </Link>

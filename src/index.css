@@ -52,3 +52,15 @@ input, textarea {
 .q-generate-button {
 	@apply flex font-medium text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-generate-button border border-generate-button hover:bg-generate-button hover:bg-opacity-5 transition
 }
+
+body::-webkit-scrollbar {
+    @apply w-2
+}
+
+/* body::-webkit-scrollbar-track {
+    @apply bg-transparent
+} */
+
+body::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded
+}

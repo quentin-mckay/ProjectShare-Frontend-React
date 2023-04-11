@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom'
 import {
     HomePage,
     LoginPage,
@@ -44,7 +44,7 @@ export default function App() {
         <div className='min-h-screen bg-primary-bg  text-primary-text grid grid-rows-[auto_1fr]'>
             {/* <div className="bg-primary text-primary grid grid-rows-[auto-1fr]"> */}
 
-            <header className='p-4 flex justify-between items-center bg-secondary-bg text-primary-text shadow'>
+            <header className='sticky w-full top-0 p-4 flex justify-between items-center bg-secondary-bg text-primary-text shadow'>
                 <Link to='/' className='flex items-center gap-2'>
                     <img src={logo} className='w-8 h-8' alt='' />
                     <h1 className='text-2xl font-semibold'>ProjectShare</h1>

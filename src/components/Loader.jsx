@@ -1,5 +1,7 @@
 const Loader = (props) => {
 
+    // console.log(props)
+    
     return (
         <div role='status'>
             <svg
