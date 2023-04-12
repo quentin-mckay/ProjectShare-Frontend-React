@@ -7,6 +7,7 @@ import AuthContext from '../context/AuthProvider'
 
 import { FaGithub } from 'react-icons/fa'
 import { BsBoxArrowUpRight } from 'react-icons/bs'
+import { ThreeDots } from 'react-loader-spinner'
 
 function ProjectPage() {
     const [project, setProject] = useState(null)
@@ -192,7 +193,18 @@ function ProjectPage() {
                             </div>
                         </div>
                 ) : (
-                    <p>Loading...</p>
+                    // <p>Loading...</p>
+                    <div className='mt-[25vh] grid place-items-center'>
+                        <ThreeDots
+                            height='120'
+                            width='120'
+                            color='gray'
+                            ariaLabel='bars-loading'
+                            wrapperStyle={{}}
+                            wrapperClass=''
+                            visible={true}
+                        />
+                    </div>
                 )}
             </div>
         </AnimatedPage>
