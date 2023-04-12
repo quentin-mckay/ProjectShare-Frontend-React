@@ -73,7 +73,7 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
                                     to={`/edit-project/${project.id}`}
                                     className='inline-block text-sm bg-orange-500 text-light-text px-3 py-2 rounded-md hover:bg-orange-600'
                                 >
-                                    Edit Project
+                                    Edit
                                 </Link>
                                 <button
                                     onClick={() => handleDelete(project.id)}
