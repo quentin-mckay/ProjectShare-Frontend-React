@@ -10,12 +10,12 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
     const { auth } = useContext(AuthContext)
 
     const shortDescription = description.split('.')[0] + '.'
-    
+
     const formatDate = (date) => {
         const dateObj = new Date(date)
         const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
-        let  d = dateObj.toLocaleDateString('en-AU', options)
+        let d = dateObj.toLocaleDateString('en-AU', options)
 
         d = d.split('')
         d.splice(d.length - 5, 0, ',')
@@ -25,8 +25,6 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
     }
 
     const formattedDate = formatDate(date)
-
-
 
     return (
         <div className='grid grid-cols-[5fr_3fr] min-h-[220px] bg-secondary-bg rounded-lg shadow-md overflow-hidden'>
@@ -101,13 +99,15 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
             </div>
 
             <div className='p-4'>
-                {image_url?.length > 0 && (
-                    <img
-                        className='object-cover h-full max-h-60 mx-auto rounded-lg'
-                        src={image_url}
-                        alt=''
-                    />
-                )}
+                <Link to={`/projects/${project.id}`}>
+                    {image_url?.length > 0 && (
+                        <img
+                            className='object-cover h-full max-h-60 mx-auto rounded-lg'
+                            src={image_url}
+                            alt=''
+                        />
+                    )}
+                </Link>
             </div>
         </div>
     )
