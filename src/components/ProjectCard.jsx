@@ -9,7 +9,11 @@ const ProjectCard = ({ project, userID, handleDelete }) => {
 
     const { auth } = useContext(AuthContext)
 
-    const shortDescription = description.split('.')[0] + '.'
+    let shortDescription = description.split('. ')[0]
+
+    if (shortDescription.at(-1) !== '.') {
+        shortDescription = shortDescription + '.'
+    }
 
     const formatDate = (date) => {
         const dateObj = new Date(date)
